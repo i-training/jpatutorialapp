@@ -38,9 +38,21 @@ public class Student {
             joinColumns = {@JoinColumn(name = "STUDENT_ID")},
             inverseJoinColumns = {@JoinColumn(name = "COURSE_ID")}
     )
+    
     private List<Course> courses = new ArrayList<>();
+    
+    public Student(Long id, String name) {
+		this.id = id;
+		this.name = name;
+	}
+    
+    public Student(Long id, String name, String houseNumber) {
+		this.id = id;
+		this.name = name;
+		this.addresses.add(new Address(houseNumber));
+	}
 
-    public Student(String name) {
+	public Student(String name) {
         this.name = name;
     }
 

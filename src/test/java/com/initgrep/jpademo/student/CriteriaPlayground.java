@@ -17,6 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import com.initgrep.jpademo.address.Address;
 import com.initgrep.jpademo.course.Course;
 
 @RunWith(SpringRunner.class)
@@ -35,11 +36,11 @@ public class CriteriaPlayground {
 		CriteriaBuilder builder = em.getCriteriaBuilder();
 		CriteriaQuery<Student> cq = builder.createQuery(Student.class);
 		Root<Student> root = cq.from(Student.class);
-		root.fetch("addresses",JoinType.LEFT);
-		cq.select(root.get("addresses"));
-//		cq.where(builder.equal(root.get("id"), 10001L));
+		Join<Student, Address> join = root.join("addresses");
+		cq.multiselect(root.get("id"), root.get("name"), join.get("houseNumber"));
+//		cq.where(builder.equal(root.get("id"), 10003L));
 		List<Student> resultList = em.createQuery(cq).getResultList();
-		resultList.forEach(s -> log.info("{}",s));
+		resultList.forEach(s -> log.info("{}, {}",s, s.getAddresses()));
 		log.info("testCriteriaAutoJoin //END");
 	}
 	

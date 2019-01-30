@@ -32,7 +32,16 @@ public class Address {
         this.zipCode = zipCode;
     }
 
-    public Address() {
+    
+    
+    public Address(String houseNumber) {
+		super();
+		this.houseNumber = houseNumber;
+	}
+
+
+
+	public Address() {
     }
 
 	public Long getId() {
