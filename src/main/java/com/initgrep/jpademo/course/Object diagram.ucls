@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<class-diagram version="1.2.2" icons="true" automaticImage="PNG" always-add-relationships="false" generalizations="true" 
+<class-diagram version="1.2.3" icons="true" automaticImage="PNG" always-add-relationships="false" generalizations="true" 
   realizations="true" associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
   <class id="1" language="java" name="com.initgrep.jpademo.student.Student" project="jpademo" 
     file="/jpademo/src/main/java/com/initgrep/jpademo/student/Student.java" binary="false" corner="BOTTOM_RIGHT">    
@@ -19,8 +19,8 @@
       <operations public="false" package="false" protected="false" private="false" static="false"/>    
     </display>  
   </class>  
-  <class id="3" language="java" name="com.initgrep.jpademo.address.Passport" project="jpademo" 
-    file="/jpademo/src/main/java/com/initgrep/jpademo/address/Passport.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="3" language="java" name="com.initgrep.jpademo.passport.Passport" project="jpademo" 
+    file="/jpademo/src/main/java/com/initgrep/jpademo/passport/Passport.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="107" width="158" x="285" y="233"/>    
     <display autosize="false" stereotype="true" package="false" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -29,39 +29,39 @@
     </display>  
   </class>  
   <association id="4">    
-    <end type="SOURCE" refId="1" navigable="true">      
-      <attribute id="5" name="passport">        
-        <position height="0" width="0" x="90" y="-125"/>      
+    <end type="SOURCE" refId="2" navigable="true">      
+      <attribute id="5" name="students">        
+        <position height="0" width="0" x="187" y="-213"/>      
       </attribute>      
-      <multiplicity id="6" minimum="0" maximum="1">        
-        <position height="0" width="0" x="90" y="-125"/>      
+      <multiplicity id="6" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="187" y="-213"/>      
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="3" navigable="true">      
-      <attribute id="7" name="student">        
-        <position height="0" width="0" x="0" y="0"/>      
+    <end type="TARGET" refId="1" navigable="true">      
+      <attribute id="7" name="courses">        
+        <position height="0" width="0" x="120" y="-225"/>      
       </attribute>      
-      <multiplicity id="8" minimum="0" maximum="1">        
-        <position height="0" width="0" x="0" y="0"/>      
+      <multiplicity id="8" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="120" y="-225"/>      
       </multiplicity>    
     </end>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="9">    
-    <end type="SOURCE" refId="2" navigable="true">      
-      <attribute id="10" name="students">        
-        <position height="0" width="0" x="187" y="-213"/>      
+    <end type="SOURCE" refId="1" navigable="true">      
+      <attribute id="10" name="passport">        
+        <position height="0" width="0" x="90" y="-125"/>      
       </attribute>      
-      <multiplicity id="11" minimum="0" maximum="2147483647">        
-        <position height="0" width="0" x="187" y="-213"/>      
+      <multiplicity id="11" minimum="0" maximum="1">        
+        <position height="0" width="0" x="90" y="-125"/>      
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="1" navigable="true">      
-      <attribute id="12" name="courses">        
-        <position height="0" width="0" x="120" y="-225"/>      
+    <end type="TARGET" refId="3" navigable="true">      
+      <attribute id="12" name="student">        
+        <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
-      <multiplicity id="13" minimum="0" maximum="2147483647">        
-        <position height="0" width="0" x="120" y="-225"/>      
+      <multiplicity id="13" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
     <display labels="true" multiplicity="true"/>  

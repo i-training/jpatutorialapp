@@ -1,4 +1,4 @@
-package com.initgrep.jpademo.address;
+package com.initgrep.jpademo.passport;
 
 import com.initgrep.jpademo.student.Student;
 
@@ -14,7 +14,7 @@ public class Passport {
     @Column
     private String number;
 
-    @OneToOne(mappedBy="passport")
+    @OneToOne(mappedBy ="passport")
     private Student student;
 
     public Passport(String number) {
@@ -48,11 +48,11 @@ public class Passport {
         this.student = student;
     }
 
-    @Override
-    public String toString() {
-        return "Passport{" +
-                "id=" + id +
-                ", number='" + number + '\'' +
-                '}';
-    }
+//    @Override
+//    public String toString() {
+//        return "Passport{" +
+//                "id=" + id +
+//                ", number='" + number + '\'' +
+//                '}';
+//    }
 }

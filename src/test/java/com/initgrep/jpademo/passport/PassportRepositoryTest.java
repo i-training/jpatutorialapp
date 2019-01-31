@@ -1,6 +1,5 @@
 package com.initgrep.jpademo.passport;
 
-import com.initgrep.jpademo.address.Passport;
 import com.initgrep.jpademo.student.Student;
 import com.initgrep.jpademo.student.StudentRepository;
 import org.junit.Test;

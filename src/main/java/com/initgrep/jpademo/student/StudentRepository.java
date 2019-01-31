@@ -16,8 +16,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.initgrep.jpademo.address.Address;
-import com.initgrep.jpademo.address.Passport;
 import com.initgrep.jpademo.course.Course;
+import com.initgrep.jpademo.passport.Passport;
 
 @Repository
 public class StudentRepository {

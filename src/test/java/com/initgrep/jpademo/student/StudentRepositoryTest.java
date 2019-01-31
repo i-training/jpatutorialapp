@@ -20,8 +20,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.initgrep.jpademo.address.Passport;
 import com.initgrep.jpademo.course.Course;
+import com.initgrep.jpademo.passport.Passport;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest

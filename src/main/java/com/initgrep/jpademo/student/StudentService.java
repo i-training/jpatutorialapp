@@ -10,8 +10,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.initgrep.jpademo.address.Passport;
 import com.initgrep.jpademo.course.Course;
+import com.initgrep.jpademo.passport.Passport;
 
 @Service
 @Transactional

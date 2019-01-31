@@ -16,8 +16,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 import com.initgrep.jpademo.address.Address;
-import com.initgrep.jpademo.address.Passport;
 import com.initgrep.jpademo.course.Course;
+import com.initgrep.jpademo.passport.Passport;
 
 @Entity
 public class Student implements Serializable{
@@ -33,7 +33,7 @@ public class Student implements Serializable{
     @OneToMany(mappedBy ="student", fetch= FetchType.LAZY)
     private List<Address> addresses = new ArrayList<>(); 
 
-    @OneToOne( fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY)
     private Passport passport;
     
     @ManyToMany(fetch=FetchType.LAZY)
@@ -60,6 +60,15 @@ public class Student implements Serializable{
 		this.name = student.getName();
 		this.addresses.add(e);
 	}
+	public Student(String name, Address e) {
+		super();
+		this.name = name;
+		this.addresses.add(e);
+	}
+	public Student( Address e) {
+		super();
+		this.addresses.add(e);
+	}
 	
 	public Student(Student student, Passport e) {
 		super();
@@ -73,6 +82,10 @@ public class Student implements Serializable{
 		this.id = student.getId();
 		this.name = student.getName();
 		this.passport = new Passport(n);
+	}
+	public Student(String name, String houseNum) {
+		this.name = name;
+		this.addresses.add(new Address(houseNum));
 	}
 
 
@@ -127,11 +140,11 @@ public class Student implements Serializable{
         this.courses.remove(course);
     }
 
-    @Override
-    public String toString() {
-        return "Student{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                '}';
-    }
+//    @Override
+//    public String toString() {
+//        return "Student{" +
+//                "id=" + id +
+//                ", name='" + name + '\'' +
+//                '}';
+//    }
 }

@@ -3,8 +3,6 @@ package com.initgrep.jpademo.passport;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.initgrep.jpademo.address.Passport;
-
 import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
 

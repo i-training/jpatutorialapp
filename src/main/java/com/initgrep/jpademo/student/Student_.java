@@ -5,8 +5,8 @@ import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
 import com.initgrep.jpademo.address.Address;
-import com.initgrep.jpademo.address.Passport;
 import com.initgrep.jpademo.course.Course;
+import com.initgrep.jpademo.passport.Passport;
 
 @StaticMetamodel(Student.class)
 public class Student_ {
