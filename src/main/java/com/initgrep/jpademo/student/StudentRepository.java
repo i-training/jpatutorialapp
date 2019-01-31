@@ -51,7 +51,7 @@ public class StudentRepository {
         }
         return Student;
     }
-
+ 
     public void saveStudentWithPassport(){
         Passport passport = new Passport("Z1001");
         em.persist(passport);

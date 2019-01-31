@@ -14,7 +14,7 @@ public class Passport {
     @Column
     private String number;
 
-    @OneToOne
+    @OneToOne(mappedBy="passport")
     private Student student;
 
     public Passport(String number) {

@@ -1,10 +1,10 @@
 package com.initgrep.jpademo.student;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
-import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -20,9 +20,11 @@ import com.initgrep.jpademo.address.Passport;
 import com.initgrep.jpademo.course.Course;
 
 @Entity
-public class Student {
+public class Student implements Serializable{
 
-    @Id
+	private static final long serialVersionUID = 8859765578654766179L;
+	
+	@Id
     @GeneratedValue
     private Long id;
     @Column(nullable = false)
@@ -31,33 +33,48 @@ public class Student {
     @OneToMany(mappedBy ="student", fetch= FetchType.LAZY)
     private List<Address> addresses = new ArrayList<>(); 
 
-    @OneToOne(mappedBy="student", fetch = FetchType.LAZY)
+    @OneToOne( fetch = FetchType.LAZY)
     private Passport passport;
+    
     @ManyToMany(fetch=FetchType.LAZY)
     @JoinTable(name = "student_course",
             joinColumns = {@JoinColumn(name = "STUDENT_ID")},
             inverseJoinColumns = {@JoinColumn(name = "COURSE_ID")}
     )
-    
     private List<Course> courses = new ArrayList<>();
     
-    public Student(Long id, String name) {
-		this.id = id;
-		this.name = name;
-	}
+    public Student() {}
     
-    public Student(Long id, String name, String houseNumber) {
-		this.id = id;
-		this.name = name;
-		this.addresses.add(new Address(houseNumber));
-	}
-
-	public Student(String name) {
+    public Student(String name) {
         this.name = name;
     }
+    
+	public Student(Passport e) {
+		super();
+		this.passport = e;
+	}
+	
+	public Student(Student student, Address e) {
+		super();
+		this.id = student.getId();
+		this.name = student.getName();
+		this.addresses.add(e);
+	}
+	
+	public Student(Student student, Passport e) {
+		super();
+		this.id = student.getId();
+		this.name = student.getName();
+		this.passport = e;
+	}
+	
+	public Student(Student student, String n) {
+		super();
+		this.id = student.getId();
+		this.name = student.getName();
+		this.passport = new Passport(n);
+	}
 
-    public Student() {
-    }
 
     public Long getId() {
         return id;
