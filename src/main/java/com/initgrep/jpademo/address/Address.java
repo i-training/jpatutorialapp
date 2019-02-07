@@ -33,6 +33,11 @@ public class Address {
     }
 
     
+    public Address(Long id, Long StudentId) {
+    	this.id = id;
+    	
+    	this.student = new Student(StudentId);
+    }
     
     public Address(String houseNumber) {
 		super();

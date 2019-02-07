@@ -69,6 +69,9 @@ public class Student implements Serializable{
 		super();
 		this.addresses.add(e);
 	}
+	public Student(Long id) {
+		this.id = id;
+	}
 	
 	public Student(Student student, Passport e) {
 		super();
@@ -140,11 +143,11 @@ public class Student implements Serializable{
         this.courses.remove(course);
     }
 
-//    @Override
-//    public String toString() {
-//        return "Student{" +
-//                "id=" + id +
-//                ", name='" + name + '\'' +
-//                '}';
-//    }
+    @Override
+    public String toString() {
+        return "Student{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }
