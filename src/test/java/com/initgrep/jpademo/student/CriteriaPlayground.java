@@ -8,6 +8,7 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Expression;
 import javax.persistence.criteria.Join;
 import javax.persistence.criteria.JoinType;
+import javax.persistence.criteria.Order;
 import javax.persistence.criteria.Path;
 import javax.persistence.criteria.Root;
 import javax.persistence.criteria.Subquery;
@@ -273,7 +274,7 @@ public class CriteriaPlayground {
 		Join<Address, Student> join = root.join("student");
 
 		Expression<Long> count = builder.count(root.get("id"));
-		cq.select(join).groupBy(join.get("id")).having(builder.equal(count, 3));
+		cq.select(join).groupBy(join.get("id")).having(builder.ge(count, 3));
 
 		List<Student> resultList = em.createQuery(cq).getResultList();
 		resultList.forEach(s -> log.info("student = {}", s));
@@ -294,7 +295,7 @@ public class CriteriaPlayground {
 		Join<Address, Student> join = subRoot.join("student");
 		Path<Long> idPath = join.get("id");
 		Expression<Long> idCountExp = builder.count(subRoot.get("id"));
-		subquery.select(idPath).groupBy(idPath).having(builder.equal(idCountExp, 3));
+		subquery.select(idPath).groupBy(idPath).having(builder.ge(idCountExp, 3));
 		
 		cq.where(root.get("id").in(subquery));
 		
@@ -302,5 +303,61 @@ public class CriteriaPlayground {
 		resultList.forEach(s -> log.info("student = {}", s));
 
 		log.info("********** testCriteria_SubQuery //END **************");
+	}
+	
+	
+	@Test
+	public void testCriteria_groupby_having_order() {
+		log.info("********** testCriteria_groupby_having called ***********");
+		CriteriaBuilder builder = em.getCriteriaBuilder();
+		CriteriaQuery<Student> cq = builder.createQuery(Student.class);
+		Root<Address> root = cq.from(Address.class);
+		Join<Address, Student> join = root.join("student");
+
+		Expression<Long> count = builder.count(root.get("id"));
+		cq.select(join).groupBy(join.get("id")).having(builder.ge(count, 1))
+		.orderBy(builder.asc(count));
+
+		List<Student> resultList = em.createQuery(cq).getResultList();
+		resultList.forEach(s -> log.info("student = {}", s));
+		
+	
+
+		log.info("********** testCriteria_groupby_having //END **************");
+	}
+	
+	@Test
+	public void testCriteria_selection_multiselect_return_object_array() {
+		log.info("********** testCriteria_selection_multiselect_return_object_array called ***********");
+		CriteriaBuilder builder = em.getCriteriaBuilder();
+		CriteriaQuery<Object[]> cq = builder.createQuery(Object[].class);
+		Root<Student> root = cq.from(Student.class);
+		Join<Student, Address> join = root.join("addresses");
+//		cq.multiselect(builder.array(root.get("name"), join.get("City")));
+		cq.multiselect(root.get("name"), join.get("City"));
+		List<Object[]> resultList = em.createQuery(cq).getResultList();
+//		resultList.forEach(s -> log.info("{}", s));
+		
+	
+
+		log.info("********** testCriteria_selection_multiselect_return_object_array //END **************");
+	}
+	
+	
+	
+	@Test
+	public void testCriteria_selection_multiselect_return_Student() {
+		log.info("********** testCriteria_selection_multiselect_return_Student called ***********");
+		CriteriaBuilder builder = em.getCriteriaBuilder();
+		CriteriaQuery<Student> cq = builder.createQuery(Student.class);
+		Root<Student> root = cq.from(Student.class);
+		Join<Student, Address> join = root.join("addresses");
+		cq.multiselect(root.get("name"), join.get("City"));
+		List<Student> resultList = em.createQuery(cq).getResultList();
+//		resultList.forEach(s -> log.info("{}", s));
+		
+	
+
+		log.info("********** testCriteria_selection_multiselect_return_Student //END **************");
 	}
 }
